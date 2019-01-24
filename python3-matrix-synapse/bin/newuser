@@ -1,0 +1,7 @@
+#!/bin/sh
+
+WORKDIR=${WORKDIR:-"/synapse"}
+
+set -ex
+[ ! -f $WORKDIR/homeserver.yaml ] && echo "Quit! No homeserver config found!" && exit 1
+exec /usr/local/bin/register_new_matrix_user -c $WORKDIR/homeserver.yaml https://localhost:8448
